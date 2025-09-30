@@ -1,13 +1,13 @@
 {% set name = "streamlit-keyup" %}
-{% set version = "0.2.0" %}
+{% set version = "0.3.0" %}
 
 package:
   name: {{ name|lower }}
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: 5a38037af547163566eff9fec0ee17a7e3556e4bf99b68d44327c726b8ea85b3
+  url: https://pypi.org/packages/source/s/streamlit-keyup/streamlit_keyup-0.3.0.tar.gz
+  sha256: 8595a14892423243669e5d50e982853ffb7eb201b65952a48676133ab9bbc937
 
 build:
   script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
@@ -36,11 +36,11 @@ test:
 
 about:
   home: https://github.com/blackary/streamlit-keyup
-  dev_url:  https://github.com/blackary/streamlit-keyup
+  dev_url: https://github.com/blackary/streamlit-keyup
   doc_url: https://github.com/blackary/streamlit-keyup/blob/main/README.md
   summary: Text input that renders on keyup
   description: |
-    If you're collecting text input from your users in your streamlit app, st.text_input 
+    If you're collecting text input from your users in your streamlit app, st.text_input
     works well -- as long as you're happy with waiting to get the response when they're finished typing.
 
     But, what if you want to get the input out, and do something with it every time they type a new key (AKA "on keyup")?
