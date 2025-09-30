@@ -6,14 +6,13 @@ package:
   version: {{ version }}
 
 source:
-  url: https://pypi.org/packages/source/s/streamlit-keyup/streamlit_keyup-0.3.0.tar.gz
+  url: https://pypi.org/packages/source/s/{{ name }}/{{ name|replace('-', '_') }}-{{ version }}.tar.gz
   sha256: 8595a14892423243669e5d50e982853ffb7eb201b65952a48676133ab9bbc937
 
 build:
   script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
   number: 0
-  # s390x is missing streamlit
-  skip: true  # [py<37 or s390x]
+  skip: true  # [py<37]
 
 requirements:
   host:
@@ -29,10 +28,11 @@ requirements:
 test:
   imports:
     - st_keyup
-  commands:
-    - pip check
   requires:
     - pip
+  commands:
+    - pip check
+    - python -c "from importlib.metadata import version; assert(version('{{ name }}')=='{{ version }}')"
 
 about:
   home: https://github.com/blackary/streamlit-keyup
