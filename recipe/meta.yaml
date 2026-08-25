@@ -1,5 +1,5 @@
 {% set name = "streamlit-keyup" %}
-{% set version = "0.3.0" %}
+{% set version = "1.0.0" %}
 
 package:
   name: {{ name|lower }}
@@ -7,12 +7,12 @@ package:
 
 source:
   url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name|replace('-', '_') }}-{{ version }}.tar.gz
-  sha256: 8595a14892423243669e5d50e982853ffb7eb201b65952a48676133ab9bbc937
+  sha256: 1ebda9aa4c715357b6a7abeb7328bcddde1175b905b88035cc4192df6c9ca535
 
 build:
   script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
   number: 0
-  skip: true  # [py<37]
+  skip: true  # [py<310]
 
 requirements:
   host:
@@ -20,9 +20,10 @@ requirements:
     - pip
     - setuptools
     - wheel
+    - uv_build >=0.8.4,<0.9.0
   run:
     - python
-    - streamlit >=1.2
+    - streamlit >=1.40
     - jinja2
 
 test:
